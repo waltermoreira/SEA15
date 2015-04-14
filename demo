@@ -1,0 +1,11 @@
+# Start first ipython
+docker run -d -v /:/host -p 1234:8888 -e ROLE=ipython1 --name ipython1 serfnode-ipython
+
+# Get the address
+PEER=$(docker exec ipython1 /me)
+
+# Start another ipython
+docker run -d -v /:/host -p 1235:8888 -e ROLE=ipython2 --name ipython2 -e PEER=$PEER serfnode-ipython
+
+# Start a rabbitmq
+docker run -d -v /:/host -e ROLE=rabbit --name rabbit -e PEER=$PEER serfnode-rabbitmq

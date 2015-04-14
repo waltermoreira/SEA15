@@ -1,0 +1,5 @@
+FROM ipython/notebook
+
+RUN pip install pika 
+COPY Producer.ipynb /notebooks/
+COPY Consumer.ipynb /notebooks/

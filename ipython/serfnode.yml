@@ -1,0 +1,8 @@
+---
+
+children:
+  - ipython:
+      image: ipython-pika
+      environment: 
+        PASSWORD: foo
+        USE_HTTP: 1
